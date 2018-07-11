@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Upload</title>
+        <link rel="stylesheet" href="./main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <fieldset id="upload" class="">
+            <legend>Upload</legend>
+            <form method="post" enctype="multipart/form-data" action="/upload">
+                <div class="">
+                    <label for="file">Choose a file</label>
+                    <input type="file" id="file" name="pikature">
+                </div>
+                <div >
+                    <button type="submit" class="btn btn-primary">Send the file</button>
+                </div>
+
+            </form>
+        </fieldset>
+
+<!--         <div class="input-group mb-3"> -->
+<!--             <div class="input-group-prepend"> -->
+<!--                 <span class="input-group-text">Upload</span> -->
+<!--             </div> -->
+<!--             <div class="custom-file"> -->
+<!--                 <input type="file" class="custom-file-input" id="inputGroupFile01"> -->
+<!--                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
+<!--             </div> -->
+<!--         </div> -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+        <script src="./index.js"></script>
+    </body>
+</html>
