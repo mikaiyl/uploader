@@ -36,7 +36,7 @@ app.post( '/upload', upload.single('pikature'), function (request, response, nex
     // request.body will hold the text fields, if there were any
     console.log("Uploaded: " + request.file.filename)
     uploadedFiles.push(request.file.filename)
-    response.render( 'upload' )
+    response.render( 'upload', { img: request.file.filename } )
 
     // if callback call on res
     if ( next ) {
