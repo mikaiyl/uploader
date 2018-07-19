@@ -53,7 +53,7 @@ function getUpdate( timestamp, url = '/update' ) {
 }
 
 setInterval( () => {
-    if ( errCount <= 2 ) {
+    if ( errCount < 2 ) {
         getUpdate( loadTime )
     } else {
         if ( !alerted ) {
