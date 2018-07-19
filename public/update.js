@@ -1,7 +1,7 @@
 const images = document.getElementById('postFlex')
 let loadTime = Date.now()
 let errCount = 0
-
+let alerted = false
 function newImageDiv( imgURI ) {
     let div = document.createElement( 'div' )
     let img = document.createElement( 'img' )
@@ -22,7 +22,6 @@ function handleErrors(response) {
 }
 
 function getUpdate( timestamp, url = '/update' ) {
-    return function(){
         let head = new Headers()
         head.append( 'Content-Type', 'application/json' )
 
@@ -51,7 +50,15 @@ function getUpdate( timestamp, url = '/update' ) {
                 console.log( err )
                 errCount += 1
             } )
-    }
 }
 
-setInterval( getUpdate( loadTime ), 1000)
+setInterval( () => {
+    if ( errCount <= 2 ) {
+        getUpdate( loadTime )
+    } else {
+        if ( !alerted ) {
+            alert( 'Unable to connect' )
+            alerted = true
+        }
+    }
+}, 5000)

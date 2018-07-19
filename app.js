@@ -34,9 +34,7 @@ app.get( '/kg', ( req, res ) => {
 } )
 
 app.post( '/update', ( req, res ) => {
-    console.log( req.get( 'Content-Type' ) )
     if ( req.body && req.body.after ) {
-        console.log( req.body )
         fs.readdir( './public/uploads' , (err, images) => {
             let newImages = []
             let timestamp = 0
