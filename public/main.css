@@ -1,4 +1,10 @@
-.postImage {
-    height: 100px;
-    width: 100px;
+.posts {
+    width: 80%;
+    max-width: 700px;
+    min-width: 200px;
+}
+
+.postFlex {
+    display: flex;
+    flex-direction: column;
 }

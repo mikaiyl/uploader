@@ -10,28 +10,54 @@ const publicPath = "./public"
 const app = express()
 const upload = multer({ dest: uploadPath })
 
-app.use(express.static(publicPath))
-app.set('view engine', 'pug')
-app.set('views', './views')
+app.use( express.json() )
+app.use( express.static( publicPath ) )
+
+app.set( 'view engine', 'pug' )
+app.set( 'views', './views' )
 
 const uploadedFiles = []
 
 app.get( '/kg', ( req, res ) => {
 
-    fs.readdir(uploadPath, function(err, items) {
-        console.log(items);
+    fs.readdir(uploadPath, (err, items) => {
+        console.log(items)
         res.render(
             'kg',
             {
                 title: 'KG',
                 items: items,
             }
-        );
-    });
+        )
+    })
 
 } )
 
-app.post( '/upload', upload.single('pikature'), function (request, response, next) {
+app.post( '/update', ( req, res ) => {
+    console.log( req.get( 'Content-Type' ) )
+    if ( req.body && req.body.after ) {
+        console.log( req.body )
+        fs.readdir( './public/uploads' , (err, images) => {
+            let newImages = []
+            let timestamp = 0
+
+            for ( let image of images ) {
+                if ( fs.statSync( './public/uploads/' + image ).mtimeMs > req.body.after ) {
+                    newImages.push( '/uploads/' + image )
+                }
+
+                timestamp = timestamp < fs.statSync( './public/uploads/' + image ).mtimeMs ? fs.statSync( './public/uploads/' + image ).mtimeMs : timestamp
+            }
+
+            res.json( {
+                images: newImages,
+                timestamp: timestamp
+            } )
+        })
+    }
+} )
+
+app.post( '/upload', upload.single('pikature'), (request, response, next) => {
 
     // request.body will hold the text fields, if there were any
     console.log("Uploaded: " + request.file.filename)
